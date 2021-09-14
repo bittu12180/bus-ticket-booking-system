@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+	var all = [];
+	var i,j;
+	function myFunction(){
+		console.log(all);
+			
+		var count=0;
+		var rtn=true;
+		let x = document.forms["myform"]["email"].value;
+		let y = document.forms["myform"]["name"].value;
+  		if (y == "") 
+		{
+		    alert("Name must be filled out");
+ 		  // return false;
+		}
+		if (x == "") 
+		{
+		    alert("Email must be filled out");
+ 		  // return false;
+		}
+		if(x!=null)
+		{
+			for(j=0;j<10;j++)
+			{
+				if (x==all[j])
+				{ 
+					// alert("Holaa");
+					{window.location="screen2.html";}	
+				}
+				count++;
+			}
+		}
+		// {
+		// 	alert("sorry2");
+		// }
+		return false;
+	}
+	fetch('https://jsonplaceholder.typicode.com/users')
+		.then(response => response.json())
+		.then(data => { var user = data;
+			
+			console.log(user);
+			
+			for(i=0;i<10;i++){
+				all.push(user[i].email);
+			}
+			console.log(all);
+			})
+	
+</script>
+</head>
+<body>
+<form name="myform"   method="post">
+    <tr>
+    <td>
+    
+  Name: <input type="text" name="name" required="required">
+  
+  </td></tr><br>
+<tr><td>
+  Email: <input type="text" name="email" required="required">
+  <br>
+</td></tr>
+<tr></td>
+  <input type="submit" value="Submit"  onclick="return myFunction()">
+</td></tr>
+</form>
+</body>
+</html>
+
+

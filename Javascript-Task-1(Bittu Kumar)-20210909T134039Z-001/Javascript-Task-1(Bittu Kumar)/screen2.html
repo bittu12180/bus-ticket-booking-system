@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+</head>
+<form name="myform2" method="post">
+    <ul id="List1"> 
+      <li>
+        <label for="name">Name : </label>
+        <input type="text" id="name" name="name" required="required"><br>
+      </li>
+      <li>
+        <label for="age">Age : </label>
+        <input type="text" id="age" name="age" required="required"><br>
+      </li>
+      <li>
+        <label for="gender">Gender : </label>
+        <select id="gender" name="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </ul>
+    <br>
+    <button id="addpassenger">Add Passengers</button>
+    <input type="submit" value="Next" onclick="return myFunction1()">
+    </br>
+</form>
+</html>
+
+<script type="text/javascript">
+  var Id=1;
+  var count=1;
+  $(function() {
+    
+    $("#addpassenger").on('click',function(){
+      count++;
+      console.log(count);
+    });
+    
+  $("#addpassenger").click(function(e) {
+    e.preventDefault();
+    $("#List1").append("&nbsp;");
+    $("#List1").append("&nbsp;");
+    $("#List1").append("&nbsp;");
+    $("#List1").append("<li><label>Name: </label><br><input type='text' id='name1' name='name' ></li>");
+    $("#List1").append("<li><label>Age: </label><br><input type='text' id='age1' name='age' ></li>");
+    $("#List1").append("<li><label>Gender: </label><br><select id='gender1' name='gender'><option value='male'>Male</option><option value='female'>Female</option></select></li>");
+    Id++;
+    });
+  });
+
+  function myFunction1(){
+      let name = $("#name").val();
+      let age = $("#age").val();
+      let gender = $("#gender").val();
+      var addName=$("#name1").val();
+      var addAge=$("#age1").val();
+      var addGender=$("#gender1").val();
+
+      localStorage.setItem("gen1Value",gender);
+      localStorage.setItem("gen2Value",addGender);
+      localStorage.setItem("passNumber",count);
+   
+      window.location="screen3.html";
+      return false;
+  }
+</script>
